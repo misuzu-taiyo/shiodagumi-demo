@@ -1,0 +1,914 @@
+/* =========================================
+   Reset & Base Settings
+========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --primary-green: #0b7a42;
+    --primary-green-dark: #075a30;
+    --accent-green: #25a864;
+    --text-color: #333333;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+}
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text-color);
+    line-height: 1.8;
+    background-color: var(--white);
+}
+a { text-decoration: none; color: inherit; }
+.text-center { text-align: center; }
+
+/* =========================================
+   Typography (明朝体)
+========================================= */
+.serif { font-family: 'Noto Serif JP', serif; font-weight: 600; }
+.hero-main.serif { font-weight: 900; }
+
+/* =========================================
+   Opening Loading Animation
+========================================= */
+.loader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: var(--primary-green); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1); }
+.loader.is-loaded { transform: translateY(-100%); }
+.loader-logo { color: var(--white); font-size: 2rem; font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: 0.3em; opacity: 0; animation: loaderFadeInOut 2s ease forwards; }
+@keyframes loaderFadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    30% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* =========================================
+   Header
+========================================= */
+.header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; }
+.logo a { color: var(--white); font-size: 1.4rem; font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: 0.15em; }
+.logo span { font-size: 0.75rem; color: var(--accent-green); margin-left: 8px; font-weight: 700; letter-spacing: 0.1em; }
+.global-nav ul { display: flex; list-style: none; align-items: center; gap: 3rem; }
+.global-nav a { color: var(--white); font-weight: 500; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.3s ease; }
+.global-nav a:hover { color: var(--accent-green); }
+
+/* PC表示ではスマホ用のボタンとメニューを完全に隠す */
+.hamburger, .mobile-menu {
+    display: none;
+}
+
+/* =========================================
+   Buttons
+========================================= */
+.btn-entry, .btn-outline, .btn-submit, .btn-outline-white, .btn-solid-white { overflow: hidden; position: relative; }
+.btn-entry { background-color: var(--primary-green); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700 !important; color: var(--white); box-shadow: 0 4px 15px rgba(11, 122, 66, 0.4); transition: all 0.3s ease; }
+.btn-entry:hover { background-color: var(--primary-green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(11, 122, 66, 0.6); }
+.btn-outline { display: inline-block; padding: 1rem 3rem; border: 1px solid var(--primary-green); color: var(--primary-green); font-weight: 700; border-radius: 50px; transition: all 0.3s ease; letter-spacing: 0.1em; }
+.btn-outline:hover { background-color: var(--primary-green); color: var(--white); }
+.btn-outline::after { content: ''; position: absolute; top: -50%; left: -60%; width: 20%; height: 200%; background: rgba(255,255,255,0.4); transform: rotate(30deg); transition: 0.5s; }
+.btn-outline:hover::after { left: 120%; }
+
+/* =========================================
+   Hero Section
+========================================= */
+.hero { position: relative; height: 100vh; display: flex; align-items: center; overflow: hidden; background-color: #000; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; animation: zoomBg 20s linear infinite alternate; }
+@keyframes zoomBg { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(11, 122, 66, 0.4) 100%); }
+.hero-content { position: relative; z-index: 2; width: 100%; padding: 0 8%; transform: translateY(10%); }
+.hero-sub { display: inline-block; background-color: var(--primary-green); color: var(--white); padding: 0.4rem 1.2rem; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.15em; margin-bottom: 1.5rem; border-left: 4px solid var(--accent-green); }
+.hero-main { color: var(--white); font-size: 5rem; line-height: 1.1; letter-spacing: 0.08em; margin-bottom: 2rem; text-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+.hero-desc { color: #e0e0e0; font-size: 1.1rem; letter-spacing: 0.15em; }
+
+/* =========================================
+   Common Section Styles (Pro Adjustments)
+========================================= */
+.section { padding: 120px 0; background-color: var(--white); color: var(--text-color); position: relative; }
+.section::before { position: absolute; top: 50px; right: 5%; font-size: 10rem; font-family: 'Inter', sans-serif; font-weight: 900; color: rgba(11, 122, 66, 0.03); z-index: 0; line-height: 1; }
+#message::before { content: "01"; }
+#works::before { content: "02"; }
+#voice::before { content: "03"; }
+
+.inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 1; }
+.section-title { margin-bottom: 80px; position: relative; }
+.section-title .en { font-family: 'Inter', sans-serif; color: var(--accent-green); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.4em; display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+.section-title .en::after { content: ''; width: 50px; height: 1px; background-color: var(--accent-green); }
+.section-title .center-line { justify-content: center; }
+.section-title .center-line::before { content: ''; width: 50px; height: 1px; background-color: var(--accent-green); }
+.section-title .ja { font-size: 2.8rem; font-weight: 900; letter-spacing: 0.05em; }
+
+/* =========================================
+   Message Section
+========================================= */
+.message-wrapper { display: flex; justify-content: space-between; align-items: flex-start; gap: 0; }
+.message-img { width: 50%; position: relative; transform: translateX(-30px); }
+.message-img img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 10px; box-shadow: 10px 10px 30px rgba(0,0,0,0.1); }
+.message-img::after { content: ''; position: absolute; top: 20px; left: -20px; width: 100%; height: 100%; background-color: rgba(11, 122, 66, 0.1); z-index: -1; border-radius: 10px; }
+.message-text { width: 55%; background-color: var(--white); padding: 60px; margin-left: -100px; margin-top: 100px; position: relative; z-index: 2; box-shadow: 20px 20px 60px rgba(0,0,0,0.05); border-radius: 10px; }
+.message-text .catchphrase { font-size: 1.8rem; line-height: 1.5; margin-bottom: 30px; color: var(--primary-green); }
+.message-text .description { font-size: 1rem; line-height: 2; margin-bottom: 30px; color: #555; }
+.message-text .signature { text-align: right; font-size: 1.1rem; margin-bottom: 40px; }
+.message-text .signature strong { font-size: 1.4rem; }
+
+/* =========================================
+   Works Section
+========================================= */
+.works { background-color: var(--light-gray); }
+.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.work-card { background-color: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; border: 1px solid rgba(0,0,0,0.05); position: relative; }
+.work-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid var(--accent-green); border-radius: 12px; opacity: 0; transition: 0.3s; pointer-events: none; z-index: 3; }
+.work-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(11, 122, 66, 0.15); }
+.work-card:hover::before { opacity: 1; transform: scale(1.02); }
+.work-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+.work-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.work-card:hover .work-img img { transform: scale(1.08); }
+.work-content { padding: 30px; }
+.work-content h3 { font-size: 1.3rem; color: var(--text-color); margin-bottom: 15px; font-weight: 700; position: relative; padding-bottom: 10px; }
+.work-content h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background-color: var(--accent-green); }
+.work-content p { font-size: 0.95rem; line-height: 1.8; color: #666; }
+
+/* =========================================
+   Voice Section
+========================================= */
+.voice { background-color: var(--white); }
+.voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+.voice-card { text-align: center; cursor: pointer; }
+.voice-img { width: 220px; height: 220px; margin: 0 auto 25px; border-radius: 50%; overflow: hidden; position: relative; border: 5px solid var(--white); outline: 2px solid var(--primary-green); outline-offset: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.voice-card:hover .voice-img { transform: scale(1.05); }
+.voice-img img { width: 100%; height: 100%; object-fit: cover; }
+.voice-content .name { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; }
+.voice-content .name span { font-size: 0.9rem; font-weight: 400; color: #666; }
+.voice-content .role { font-size: 0.85rem; color: var(--primary-green); margin-bottom: 15px; font-weight: 700; letter-spacing: 0.05em; }
+.btn-text { color: var(--text-color); font-weight: 700; font-size: 0.9rem; transition: color 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
+.voice-card:hover .btn-text { color: var(--accent-green); }
+.btn-text .arrow { transition: transform 0.3s ease; }
+.voice-card:hover .btn-text .arrow { transform: translateX(5px); }
+
+/* =========================================
+   Culture Section
+========================================= */
+.culture { background-color: var(--light-gray); }
+.culture-desc { margin-bottom: 50px; line-height: 2; color: #555; }
+.culture-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.culture-img { border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.culture-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.culture-img:hover img { transform: scale(1.1); }
+
+/* =========================================
+   Recruit Section (境界線またぎ)
+========================================= */
+.recruit { padding: 0; position: relative; z-index: 10; background: linear-gradient(to bottom, var(--light-gray) 50%, var(--white) 50%); }
+.recruit-box { background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%); border-radius: 20px; padding: 60px 40px; text-align: center; color: var(--white); box-shadow: 0 20px 40px rgba(11, 122, 66, 0.2); transform: translateY(-40px); margin-bottom: -40px; }
+.recruit-content .en { display: block; font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 10px; font-size: 0.9rem; opacity: 0.9; }
+.recruit-content .ja { font-size: 2.5rem; font-weight: 900; letter-spacing: 0.1em; margin-bottom: 20px; }
+.recruit-content p { margin-bottom: 40px; font-size: 1.05rem; }
+.recruit-btns { display: flex; justify-content: center; gap: 20px; }
+.btn-outline-white { display: inline-block; padding: 1rem 3rem; border: 2px solid var(--white); color: var(--white); font-weight: 700; border-radius: 50px; transition: all 0.3s ease; }
+.btn-outline-white:hover { background-color: var(--white); color: var(--primary-green); }
+.btn-solid-white { display: inline-block; padding: 1rem 3rem; background-color: var(--white); color: var(--primary-green); font-weight: 700; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+.btn-solid-white:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* =========================================
+   Contact Section
+========================================= */
+.contact { background-color: var(--white); padding-top: 120px; }
+.contact-wrapper { display: flex; justify-content: space-between; gap: 60px; background-color: var(--light-gray); padding: 50px; border-radius: 15px; }
+.contact-info { width: 35%; }
+.contact-info .company-name { font-size: 1.8rem; font-family: 'Inter', sans-serif; font-weight: 900; color: var(--primary-green); margin-bottom: 20px; letter-spacing: 0.1em; }
+.contact-info p { margin-bottom: 10px; color: #555; }
+.contact-info .tel { font-size: 1.5rem; font-weight: 700; color: var(--text-color); margin: 20px 0 5px; }
+.contact-info .tel span { font-size: 0.9rem; font-weight: 400; }
+.contact-form { width: 60%; }
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; }
+.form-group label .required { color: #e74c3c; margin-left: 5px; }
+.form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease; background-color: var(--white); }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-green); box-shadow: 0 0 0 3px rgba(37, 168, 100, 0.1); }
+.btn-submit { background-color: var(--primary-green); color: var(--white); border: none; padding: 15px 40px; font-size: 1rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; width: 100%; letter-spacing: 0.1em; }
+.btn-submit:hover { background-color: var(--primary-green-dark); }
+
+/* =========================================
+   Footer
+========================================= */
+.footer { background-color: #1a1a1a; color: var(--white); padding: 60px 0 20px; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 20px; }
+.footer-logo a { font-size: 1.5rem; font-family: 'Inter', sans-serif; font-weight: 900; letter-spacing: 0.1em; color: var(--white); transition: opacity 0.3s ease; }
+.footer-logo a:hover { opacity: 0.8; }
+.footer-logo span { font-size: 0.8rem; color: var(--accent-green); margin-left: 5px; }
+.footer-nav { display: flex; list-style: none; gap: 30px; flex-wrap: wrap; justify-content: center; }
+.footer-nav a { font-size: 0.9rem; transition: color 0.3s ease; opacity: 0.8; display: flex; align-items: center; }
+.footer-nav a:hover { color: var(--accent-green); opacity: 1; }
+.external-icon { font-size: 0.8em; margin-left: 4px; font-family: sans-serif; }
+.copyright { text-align: center; font-size: 0.8rem; opacity: 0.6; letter-spacing: 0.05em; font-family: 'Inter', sans-serif; }
+
+/* =========================================
+   Animations
+========================================= */
+/* Hero Animations (ローディング分遅延) */
+.fade-up { opacity: 0; transform: translateY(40px); animation: fadeUpAnim 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.delay-1 { animation-delay: 2.2s; } 
+.delay-2 { animation-delay: 2.4s; } 
+.delay-3 { animation-delay: 2.6s; } 
+.delay-4 { animation-delay: 3.2s; }
+@keyframes fadeUpAnim { to { opacity: 1; transform: translateY(0); } }
+
+/* Scroll Indicator */
+.scroll-down { position: absolute; bottom: 40px; right: 8%; z-index: 2; color: var(--white); font-size: 0.7rem; font-family: 'Inter', sans-serif; letter-spacing: 0.2em; display: flex; align-items: center; gap: 15px; transform: rotate(90deg); transform-origin: right bottom; }
+.scroll-down::after { content: ''; display: inline-block; width: 60px; height: 1px; background-color: rgba(255,255,255,0.5); position: relative; overflow: hidden; }
+.scroll-down::before { content: ''; position: absolute; right: 0; top: 50%; width: 100%; height: 1px; background-color: var(--white); animation: scrollSlide 2s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+@keyframes scrollSlide { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+/* Scroll Fade In Animations */
+.js-fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.js-fade-in.is-visible { opacity: 1; transform: translateY(0); }
+.delay-1-scroll { transition-delay: 0.2s; }
+.delay-2-scroll { transition-delay: 0.4s; }
+
+/* =========================================
+   下層ページ共通スタイル (Lower Pages)
+========================================= */
+.lower-page .header { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); }
+.page-header { position: relative; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: 0; }
+.page-header-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.page-header-bg img { width: 100%; height: 100%; object-fit: cover; }
+.page-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(11, 122, 66, 0.6) 100%); }
+.page-header-content { position: relative; z-index: 2; text-align: center; color: var(--white); padding-top: 60px; }
+.page-header-content .en { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: 0.3em; font-size: 0.9rem; color: var(--accent-green); display: block; margin-bottom: 10px; }
+.page-header-content .ja { font-size: 2.5rem; letter-spacing: 0.1em; }
+.breadcrumb { padding: 20px 5%; font-size: 0.85rem; color: #666; font-family: 'Inter', sans-serif; background-color: var(--light-gray); }
+.breadcrumb a { color: var(--primary-green); transition: 0.3s; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span { color: #999; }
+.lower-main { padding: 80px 0; }
+
+/* 共通見出し（プロ仕様） */
+.recruit-heading { font-size: 1.8rem; font-weight: 900; color: var(--text-color); margin-bottom: 40px; padding-bottom: 15px; border-bottom: 2px solid #eee; position: relative; display: flex; align-items: flex-end; gap: 15px; }
+.recruit-heading::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 60px; height: 2px; background-color: var(--primary-green); }
+.recruit-heading span { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #999; font-weight: 700; letter-spacing: 0.1em; padding-bottom: 4px; }
+
+/* 求める人物像 */
+.ideal-candidate { margin-bottom: 80px; }
+.ideal-content { display: flex; gap: 50px; align-items: center; }
+.ideal-text { width: 55%; }
+.ideal-text p { font-size: 1.05rem; margin-bottom: 25px; line-height: 1.8; }
+.check-list { list-style: none; }
+.check-list li { position: relative; padding-left: 35px; margin-bottom: 15px; font-weight: 700; font-size: 1.05rem; }
+.check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent-green); font-size: 1.2rem; font-weight: 900; }
+.ideal-img { width: 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.ideal-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+
+/* 募集要項テーブル（リッチ版） */
+.recruit-table-wrapper { margin-bottom: 80px; }
+.recruit-table-rich { width: 100%; border-collapse: collapse; background-color: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+.recruit-table-rich th, .recruit-table-rich td { padding: 30px; border-bottom: 1px solid #eee; text-align: left; line-height: 1.8; }
+.recruit-table-rich tr:last-child th, .recruit-table-rich tr:last-child td { border-bottom: none; }
+.recruit-table-rich th { width: 25%; font-weight: 700; color: var(--primary-green); vertical-align: top; background-color: #fcfcfc; }
+.job-label { display: inline-block; background-color: var(--light-gray); padding: 5px 15px; border-radius: 5px; font-size: 0.9rem; font-weight: 700; margin-right: 10px; margin-bottom: 10px; border: 1px solid #ddd; }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 3px; font-size: 0.75rem; font-weight: 700; margin-right: 10px; vertical-align: text-bottom; }
+.badge-req { background-color: #e74c3c; color: #fff; }
+.badge-want { background-color: #3498db; color: #fff; }
+.salary .price { font-size: 1.5rem; font-weight: 900; color: #e74c3c; font-family: 'Inter', sans-serif; }
+.mb-2 { margin-bottom: 15px; }
+
+/* 選考フロー */
+.selection-flow { margin-bottom: 80px; }
+.flow-steps { display: flex; justify-content: space-between; align-items: stretch; gap: 20px; }
+.step { flex: 1; background-color: var(--light-gray); padding: 40px 30px; border-radius: 12px; text-align: center; position: relative; border-top: 4px solid var(--primary-green); }
+.step-num { font-family: 'Inter', sans-serif; color: var(--accent-green); font-weight: 900; font-size: 1.2rem; letter-spacing: 0.1em; margin-bottom: 15px; }
+.step-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 20px; }
+.step p { font-size: 0.95rem; text-align: left; color: #555; }
+.step-arrow { display: flex; align-items: center; justify-content: center; color: var(--accent-green); font-weight: 900; font-size: 1.5rem; }
+.step-arrow::after { content: '▶'; }
+
+/* エントリー CTA */
+.entry-cta { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 60px 40px; border-radius: 12px; border: 1px solid #ddd; }
+.entry-cta p { font-size: 1.2rem; font-weight: 900; margin-bottom: 30px; }
+.btn-solid-green { display: inline-block; padding: 1.2rem 4rem; background-color: var(--primary-green); color: var(--white); font-weight: 700; border-radius: 50px; box-shadow: 0 5px 20px rgba(11, 122, 66, 0.3); transition: all 0.3s ease; font-size: 1.1rem; letter-spacing: 0.1em; }
+.btn-solid-green:hover { background-color: var(--primary-green-dark); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(11, 122, 66, 0.4); color: var(--white); }
+
+/* =========================================
+   Greeting Page (社長あいさつ詳細)
+========================================= */
+.greeting-article {
+    max-width: 800px; /* 読みやすさを考慮し、横幅を絞る（雑誌風） */
+    margin: 0 auto;
+}
+.greeting-img-wrap {
+    position: relative;
+    margin-bottom: 50px;
+}
+/* 写真に高級感のある装飾を追加 */
+.greeting-img-wrap::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30%;
+    height: 30%;
+    border-top: 3px solid var(--accent-green);
+    border-left: 3px solid var(--accent-green);
+    z-index: 0;
+}
+.greeting-img-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 30%;
+    height: 30%;
+    border-bottom: 3px solid var(--accent-green);
+    border-right: 3px solid var(--accent-green);
+    z-index: 0;
+}
+.greeting-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+.greeting-lead {
+    font-size: 2rem;
+    color: var(--primary-green);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+.greeting-text p {
+    font-size: 1.05rem;
+    line-height: 2.2; /* 長文なので行間をゆったり取る */
+    margin-bottom: 30px;
+    color: #444;
+}
+.greeting-sign {
+    text-align: right;
+    font-size: 1.2rem;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+    color: var(--text-color);
+}
+.greeting-sign strong {
+    font-size: 1.8rem;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* =========================================
+   Interview Detail Page (社員インタビュー詳細)
+========================================= */
+/* トップビジュアル */
+.interview-hero { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; background-color: var(--light-gray); border-radius: 15px; padding: 40px; }
+.interview-hero-img { width: 40%; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.interview-hero-img img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; }
+.interview-hero-text { width: 60%; }
+.interview-hero-text .role { color: var(--primary-green); font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; letter-spacing: 0.05em; }
+.interview-hero-text .name { font-size: 2.2rem; font-weight: 900; margin-bottom: 30px; display: flex; align-items: baseline; gap: 15px; }
+.interview-hero-text .name span { font-size: 1rem; color: #999; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 0.1em; }
+.interview-hero-text .catchphrase { font-size: 1.6rem; line-height: 1.6; color: var(--text-color); border-left: 4px solid var(--accent-green); padding-left: 20px; }
+
+/* Q&A セクション */
+.interview-qa-wrap { max-width: 800px; margin: 0 auto 100px; }
+.qa-block { margin-bottom: 50px; background-color: var(--white); border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; padding: 40px; }
+.q-box { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px dashed #ddd; }
+.a-box { display: flex; gap: 20px; align-items: flex-start; }
+.qa-block .icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.2rem; flex-shrink: 0; }
+.q-box .icon { background-color: var(--text-color); color: var(--white); }
+.a-box .icon { background-color: var(--primary-green); color: var(--white); }
+.q-box h4 { font-size: 1.3rem; line-height: 1.5; font-weight: 700; padding-top: 5px; }
+.a-box p { font-size: 1.05rem; line-height: 1.8; color: #444; padding-top: 5px; }
+
+/* 1日のスケジュール（タイムライン） */
+.interview-schedule { max-width: 800px; margin: 0 auto 80px; }
+.timeline { position: relative; padding-left: 40px; }
+/* タイムラインの縦線 */
+.timeline::before { content: ''; position: absolute; top: 0; left: 19px; height: 100%; width: 2px; background-color: #ddd; }
+.timeline-item { position: relative; margin-bottom: 40px; display: flex; gap: 30px; align-items: flex-start; }
+.timeline-item:last-child { margin-bottom: 0; }
+/* タイムラインの丸ポチ */
+.timeline-item::before { content: ''; position: absolute; top: 5px; left: -26px; width: 12px; height: 12px; border-radius: 50%; background-color: var(--accent-green); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--accent-green); z-index: 2; }
+.timeline-item .time { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--primary-green); width: 80px; flex-shrink: 0; padding-top: 2px; }
+.timeline-item .content { background-color: var(--light-gray); padding: 25px; border-radius: 8px; flex-grow: 1; }
+.timeline-item .content h5 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; }
+.timeline-item .content p { font-size: 0.95rem; color: #555; }
+
+/* =========================================
+   Works Detail Page (部門紹介詳細)
+========================================= */
+.works-intro {
+    margin-bottom: 80px;
+}
+.works-intro h2 {
+    font-size: 2.2rem;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.works-intro p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* ジグザグレイアウトのブロック */
+.dept-block {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 100px;
+}
+/* .reverse クラスがついている場合は左右を反転させる */
+.dept-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.dept-img-box {
+    width: 50%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.dept-img-box img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.dept-block:hover .dept-img-box img {
+    transform: scale(1.05); /* ホバー時に少しズームする演出 */
+}
+
+/* 画像の上に被さる大きな数字 */
+.dept-num {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    font-size: 6rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    pointer-events: none;
+}
+.dept-block.reverse .dept-num {
+    left: auto;
+    right: 20px;
+}
+
+.dept-text-box {
+    width: 50%;
+}
+.dept-title {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    padding: 5px 15px;
+    background-color: rgba(11, 122, 66, 0.1);
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+.dept-catch {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: var(--text-color);
+}
+.dept-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+.dept-list {
+    list-style: none;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px dashed #ccc;
+}
+.dept-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #333;
+}
+.dept-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+}
+
+/* =========================================
+   Voices Editorial Page (社員の声 一覧：おしゃれ版)
+========================================= */
+/* Interフォントを明示的に指定するためのユーティリティ */
+.Inter { font-family: 'Inter', sans-serif; }
+
+.voice-editorial-list {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.voice-item {
+    position: relative;
+    margin-bottom: 120px; /* セクションごとに大きな余白を取る */
+}
+.voice-item:last-child { margin-bottom: 0; }
+
+.voice-item-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    z-index: 2;
+}
+
+/* reverse クラスがついている場合は左右を反転（02椎名さん） */
+.voice-item.reverse .voice-item-inner {
+    flex-direction: row-reverse;
+}
+
+/* 写真部分 */
+.voice-item-img-wrap {
+    width: 50%;
+    position: relative;
+    z-index: 2;
+}
+.voice-item-img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 正方形にするのがトレンド */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    transform: translateX(-30px); /* 少し左にズラす */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.voice-item.reverse .voice-item-img {
+    transform: translateX(30px); /* 反転時は右にズラす */
+}
+.voice-item-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ホバー時の写真の動き */
+.voice-item-inner:hover .voice-item-img {
+    transform: translateX(0); /* ズレを戻す */
+}
+.voice-item-inner:hover .voice-item-img img {
+    transform: scale(1.05); /* 少しズーム */
+}
+
+/* テキスト部分 */
+.voice-item-content {
+    width: 55%; /* 写真と少し重ねるために広めに取る */
+    background-color: var(--white);
+    padding: 60px;
+    border-radius: 12px;
+    box-shadow: 20px 20px 80px rgba(0,0,0,0.05);
+    margin-left: -80px; /* 写真の上に大胆に重ねる！ */
+    position: relative;
+    z-index: 3;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+.voice-item.reverse .voice-item-content {
+    margin-left: 0;
+    margin-right: -80px; /* 反転時は右に重ねる */
+}
+
+/* ホバー時のテキストの動き */
+.voice-item-inner:hover .voice-item-content {
+    transform: translateY(-10px); /* 少し上に浮く */
+    box-shadow: 20px 30px 100px rgba(11, 122, 66, 0.1); /* 緑の影を出す */
+}
+
+/* メタ情報（部門・入社年） */
+.voice-item-content .meta {
+    display: flex; gap: 15px; margin-bottom: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.voice-item-content .dept {
+    color: var(--primary-green); background-color: rgba(11, 122, 66, 0.08); padding: 5px 15px; border-radius: 50px;
+}
+.voice-item-content .year {
+    color: #999; padding-top: 5px;
+}
+
+/* 名前 */
+.voice-item-content .name {
+    font-size: 2.2rem; font-weight: 900; margin-bottom: 30px; display: flex; align-items: baseline; gap: 15px; letter-spacing: 0.05em;
+}
+.voice-item-content .name span {
+    font-size: 1rem; color: #aaa; font-weight: 400; letter-spacing: 0.1em;
+}
+
+/* キャッチコピー（明朝体） */
+.voice-item-content .catchphrase {
+    font-size: 1.4rem; line-height: 1.6; color: var(--text-color); margin-bottom: 40px;
+    /* 雑誌風に、最初の文字を少し大きく */
+}
+.voice-item-content .catchphrase::first-letter {
+    font-size: 1.3em; color: var(--primary-green); font-weight: 900;
+}
+
+/* リードモアボタン */
+.btn-read-story {
+    font-weight: 900; font-size: 0.9rem; color: #666; letter-spacing: 0.2em; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+}
+.btn-read-story::after {
+    content: ''; width: 30px; height: 1px; background-color: #ccc; transition: 0.3s;
+}
+.voice-item-inner:hover .btn-read-story { color: var(--accent-green); }
+.voice-item-inner:hover .btn-read-story::after { background-color: var(--accent-green); width: 50px; }
+
+/* 背景の大きな数字 (ここが「おしゃれ」のポイント) */
+.voice-item-num {
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    font-size: 15rem; /* 圧倒的に大きく！ */
+    font-weight: 900;
+    color: rgba(11, 122, 66, 0.03); /* ほとんど見えないくらい薄く */
+    z-index: 1;
+    line-height: 1;
+    pointer-events: none;
+}
+.voice-item.reverse .voice-item-num {
+    left: auto;
+    right: -20px;
+}
+
+/* ========================================= Responsive ========================================= */
+@media screen and (max-width: 900px) {
+    .voice-item-content { padding: 40px; margin-left: -50px; }
+    .voice-item.reverse .voice-item-content { margin-right: -50px; }
+    .voice-item-content .name { font-size: 1.8rem; }
+    .voice-item-content .catchphrase { font-size: 1.2rem; }
+    .voice-item-num { font-size: 10rem; top: -20px; }
+}
+
+@media screen and (max-width: 768px) {
+    .works-intro { margin-bottom: 60px; }
+    .works-intro h2 { font-size: 1.8rem; }
+    
+    .voice-item { margin-bottom: 60px; }
+    .voice-item-inner, .voice-item.reverse .voice-item-inner { flex-direction: column; gap: 0; }
+    .voice-item-img-wrap, .voice-item-content { width: 100%; }
+    .voice-item-img { transform: translateX(0) translateY(10px); border-radius: 12px 12px 0 0; }
+    .voice-item.reverse .voice-item-img { transform: translateX(0) translateY(10px); }
+    .voice-item-content { margin-left: 0 !important; margin-right: 0 !important; margin-top: -10px; border-radius: 0 0 12px 12px; padding: 30px 20px; }
+    .voice-item-content .meta { gap: 10px; flex-wrap: wrap; }
+    .voice-item-content .name { font-size: 1.5rem; gap: 10px; flex-wrap: wrap; }
+    .voice-item-content .catchphrase { font-size: 1.1rem; margin-bottom: 30px; }
+    .voice-item-num { font-size: 6rem; top: 10px; left: 10px !important; right: auto !important; color: rgba(11, 122, 66, 0.05); }
+}
+
+/* =========================================
+   External Entry Button (マイナビ用)
+========================================= */
+/* 通常背景用（下層ページのCTAなど） */
+.btn-mynavi {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #00A0E9 0%, #007fc1 100%); /* マイナビらしい鮮やかなブルー */
+    color: var(--white);
+    font-weight: 900; /* より太く見やすく */
+    padding: 1.2rem 4rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(0, 160, 233, 0.4); /* 影もブルーにして発光させる */
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    border: 2px solid transparent;
+}
+
+.btn-mynavi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 160, 233, 0.6);
+    color: var(--white);
+    filter: brightness(1.1); /* ホバーで少し明るく */
+}
+
+/* 緑背景用（トップページの採用情報など） */
+.btn-mynavi-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    color: #007fc1; /* 文字色をマイナビブルーに */
+    font-weight: 900;
+    padding: 1.2rem 4rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+}
+
+.btn-mynavi-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background-color: #f0f8ff; /* ホバーでほんのり青みがかった白に */
+}
+
+.external-icon {
+    font-size: 0.8em;
+    margin-left: 8px;
+    font-family: sans-serif;
+}
+/* =========================================
+   Responsive (スマートフォン対応)
+========================================= */
+@media screen and (max-width: 768px) {
+    .hero-main { font-size: 2.5rem; }
+    .hero-content { padding: 0 5%; transform: translateY(0); }
+    .global-nav { display: none; }
+    .section { padding: 80px 0; }
+    .section::before { font-size: 6rem; top: 20px; }
+    .section-title .ja { font-size: 2rem; }
+    .message-wrapper { flex-direction: column; gap: 40px; align-items: center; }
+    .message-img { width: 90%; transform: translateX(0); }
+    .message-text { width: 100%; margin-left: 0; margin-top: -30px; padding: 30px; }
+    .works-grid { grid-template-columns: 1fr; gap: 30px; }
+    .voice-grid { grid-template-columns: 1fr; gap: 50px; }
+    .voice-img { width: 180px; height: 180px; }
+    .culture-gallery { grid-template-columns: 1fr; }
+    .recruit-box { padding: 40px 20px; }
+    .recruit-content .ja { font-size: 1.8rem; }
+    .recruit-btns { flex-direction: column; gap: 15px; }
+    .btn-outline-white, .btn-solid-white { width: 100%; }
+    .contact-wrapper { flex-direction: column; padding: 30px 20px; gap: 40px; }
+    .contact-info, .contact-form { width: 100%; }
+    .footer-content { flex-direction: column; gap: 30px; text-align: center; }
+    .footer-nav { flex-direction: column; gap: 15px; }
+
+    /* --- ハンバーガーボタン --- */
+    .hamburger { display: block; position: relative; width: 40px; height: 40px; background: transparent; border: none; cursor: pointer; z-index: 1000; }
+    .hamburger span { position: absolute; left: 5px; width: 30px; height: 2px; background-color: var(--white); transition: all 0.3s ease; }
+    .hamburger span:nth-child(1) { top: 10px; }
+    .hamburger span:nth-child(2) { top: 19px; }
+    .hamburger span:nth-child(3) { top: 28px; }
+    
+    /* ハンバーガー開いた時（×印になる） */
+    .hamburger.is-active span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+    /* --- スマホ用メニュー --- */
+    .mobile-menu {
+        display: block; /* ←★★これを追加！！（存在を復活させる）★★ */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh;
+        z-index: 90;
+        background-color: rgba(11, 122, 66, 0.98);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .mobile-menu.is-active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 40px 20px;
+    }
+
+    .mobile-nav {
+        list-style: none;
+        text-align: center;
+        padding: 0;
+        margin-bottom: 60px; /* ボタンとの間にゆとりを持たせる */
+        width: 100%;
+    }
+
+    .mobile-nav li {
+        margin-bottom: 35px;
+    }
+
+    .mobile-nav a {
+        display: block;
+        color: var(--white);
+        text-decoration: none;
+    }
+
+    /* 英語表記（小さくスタイリッシュに） */
+    .mobile-nav .en {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 5px;
+    }
+
+    /* 日本語表記（大きく力強く） */
+    .mobile-nav .ja {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+
+    /* メニュー下部のマイナビボタン */
+    .mobile-menu-bottom {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .mobile-menu-bottom .btn-mynavi-white {
+        width: 100%;
+        max-width: 300px; /* 広がりすぎないように制限 */
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+
+    /* 下層ページスマホ対応（リッチ版） */
+    .recruit-heading { font-size: 1.5rem; flex-direction: column; align-items: flex-start; gap: 5px; }
+    .ideal-content { flex-direction: column; gap: 30px; }
+    .ideal-text, .ideal-img { width: 100%; }
+    .recruit-table-rich th, .recruit-table-rich td { display: block; width: 100%; padding: 15px 20px; }
+    .recruit-table-rich th { background-color: #f8f9fa; padding-bottom: 10px; border-bottom: none; font-size: 1.1rem; }
+    .recruit-table-rich td { padding-top: 10px; }
+    .flow-steps { flex-direction: column; gap: 10px; }
+    .step-arrow { transform: rotate(90deg); margin: 10px 0; }
+    .entry-cta { padding: 40px 20px; }
+    .entry-cta p { font-size: 1.1rem; }
+    .btn-solid-green { padding: 1rem 2rem; width: 100%; }
+
+    /* 社長あいさつ詳細スマホ対応 */
+    .greeting-img-wrap { margin-bottom: 30px; }
+    .greeting-img-wrap::before, .greeting-img-wrap::after { display: none; /* スマホでは装飾を消してスッキリさせる */ }
+    .greeting-lead { font-size: 1.4rem; text-align: left; }
+    .greeting-text p { font-size: 1rem; line-height: 1.8; }
+
+    /* インタビュー詳細スマホ対応 */
+    .interview-hero { flex-direction: column; gap: 30px; padding: 20px; }
+    .interview-hero-img, .interview-hero-text { width: 100%; }
+    .interview-hero-text .name { font-size: 1.8rem; flex-direction: column; gap: 5px; }
+    .interview-hero-text .catchphrase { font-size: 1.2rem; padding-left: 15px; }
+    .qa-block { padding: 20px; }
+    .q-box h4 { font-size: 1.1rem; }
+    .a-box p { font-size: 0.95rem; }
+    .timeline { padding-left: 30px; }
+    .timeline::before { left: 9px; }
+    .timeline-item::before { left: -26px; }
+    .timeline-item { flex-direction: column; gap: 10px; }
+    .timeline-item .content { width: 100%; padding: 15px; }
+
+    /* 部門紹介詳細スマホ対応 */
+    .works-intro h2 { font-size: 1.6rem; }
+    .works-intro p { font-size: 1rem; }
+    .dept-block, .dept-block.reverse { flex-direction: column; gap: 30px; margin-bottom: 70px; }
+    .dept-img-box, .dept-text-box { width: 100%; }
+    .dept-num { font-size: 4rem; bottom: -10px; left: 10px !important; right: auto !important; }
+    .dept-catch { font-size: 1.4rem; }
+    .dept-desc { font-size: 1rem; }
+}
+
+/* =========================================
+   CTA Button Group
+========================================= */
+.cta-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* スマホ対応 */
+@media screen and (max-width: 768px) {
+    .cta-btn-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-solid-green, .btn-mynavi {
+        width: 100%; /* スマホではボタンを横幅いっぱいに広げる */
+        padding: 1rem 1.5rem;
+    }
+}
