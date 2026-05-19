@@ -255,9 +255,7 @@ a { text-decoration: none; color: inherit; }
 .ideal-img { width: 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .ideal-img img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    aspect-ratio: 4 / 3;
+    height: auto;
 }
 
 /* 募集要項テーブル（リッチ版） */
