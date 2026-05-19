@@ -252,10 +252,20 @@ a { text-decoration: none; color: inherit; }
 .check-list { list-style: none; }
 .check-list li { position: relative; padding-left: 35px; margin-bottom: 15px; font-weight: 700; font-size: 1.05rem; }
 .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent-green); font-size: 1.2rem; font-weight: 900; }
-.ideal-img { width: 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+/* 写真の外枠 */
+.ideal-img {
+    width: 45%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    align-self: center; 
+}
+
+/* 中の写真 */
 .ideal-img img {
     width: 100%;
     height: auto;
+    display: block; 
 }
 
 /* 募集要項テーブル（リッチ版） */
