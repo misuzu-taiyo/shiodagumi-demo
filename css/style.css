@@ -253,7 +253,12 @@ a { text-decoration: none; color: inherit; }
 .check-list li { position: relative; padding-left: 35px; margin-bottom: 15px; font-weight: 700; font-size: 1.05rem; }
 .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent-green); font-size: 1.2rem; font-weight: 900; }
 .ideal-img { width: 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-.ideal-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+.ideal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 4 / 3;
+}
 
 /* 募集要項テーブル（リッチ版） */
 .recruit-table-wrapper { margin-bottom: 80px; }
